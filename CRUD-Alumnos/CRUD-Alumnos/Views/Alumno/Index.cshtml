@@ -33,11 +33,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nombres)
+            @Html.DisplayFor(modelItem => item.NombreCompleto)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellidos)
-        </td>
+ 
         <td>
             @Html.DisplayFor(modelItem => item.Edad)
         </td>
