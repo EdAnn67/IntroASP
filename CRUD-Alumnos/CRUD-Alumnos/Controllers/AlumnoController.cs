@@ -16,8 +16,21 @@ namespace CRUD_Alumnos.Controllers
             {
                 using (var db = new AlumnosContext())
                 {
-                    List<Alumno> lista = db.Alumnoes.Where(a => a.Edad > 18).ToList();
-                    return View(db.Alumnoes.ToList());
+                    var data = from a in db.Alumnoes
+                               join c in db.Ciudades on a.codCiudad equals c.Id
+                               where a.Edad > 18
+                               select new AlumnoCE()
+                               {
+                                   Id = a.Id,
+                                   Nombres = a.Nombres,
+                                   Apellidos = a.Apellidos,
+                                   Edad = a.Edad,
+                                   Sexo = a.Sexo,
+                                   NombreCiudad = c.Nombre,
+                                   FechaRegistro = a.FechaRegistro
+                               };
+                    //List<Alumno> lista = db.Alumnoes.Where(a => a.Edad > 18).ToList();
+                    return View(data.ToList());
 
                 }
             }
