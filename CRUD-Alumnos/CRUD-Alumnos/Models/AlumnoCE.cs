@@ -28,8 +28,9 @@ namespace CRUD_Alumnos.Models
 
     public partial class Alumno
     {
-        public int Estado { get; set; }
+        /*
+        public int Estado { get; set; }*/
         public string NombreCompleto { get { return Nombres + " " + Apellidos; } }
-
+        
     }
 }
