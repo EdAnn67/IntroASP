@@ -21,7 +21,12 @@ namespace CRUD_Alumnos.Models
         [Required]
         [Display(Name = "Ingrese Sexo del alumno")]
         public string Sexo { get; set; }
-        
+
+        [Required]
+        [Display(Name = "Ciudad")]
+        public int codCiudad { get; set; }
+
+
     }
 
     [MetadataType(typeof(AlumnoCE))]

@@ -13,16 +13,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombres)
+            NombreCompleto
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Apellidos)
+            Edad
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Edad)
+            Sexo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sexo)
+            FechaRegistro
+        </th>
+        <th>
+            Ciudad
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FechaRegistro)
@@ -31,35 +34,39 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreCompleto)
-        </td>
- 
-        <td>
-            @Html.DisplayFor(modelItem => item.Edad)
-        </td>
-        <td>
-            @{
-                if (item.Sexo == "M")
-                {
-                    <span>Masculino</span>
-                }
-                else
-                {
-                    <span>Femenino</span>
-                }
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NombreCompleto)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Edad)
+    </td>
+    <td>
+        @{
+            if (item.Sexo == "M")
+            {
+                <span>Masculino</span>
             }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaRegistro)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-            @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id }, new { @class = "aelimina" })
-        </td>
-    </tr>
+            else
+            {
+                <span>Femenino</span>
+            }
+        }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FechaRegistro)
+    </td>
+
+    <td>
+        @CRUD_Alumnos.Controllers.AlumnoController.NombreCiudad(item.codCiudad)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id }, new { @class = "aelimina" })
+    </td>
+</tr>
 }
 
 </table>
