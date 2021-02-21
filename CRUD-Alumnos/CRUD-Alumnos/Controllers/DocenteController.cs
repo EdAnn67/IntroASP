@@ -56,5 +56,38 @@ namespace CRUD_Alumnos.Controllers
                 return View(D);
             }
         }
+        /*
+        public ActionResult EditarDoc(int id)
+        {
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    Docente D = db.Docentes.Where(a => a.Id == id).FirstOrDefault();
+                    Docente Doc = db.Docentes.Find(id);
+                    return View(Doc);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }*/
+
+        public ActionResult DeleteDoc(int id)
+        {
+
+            using (var db = new AlumnosContext())
+            {
+                Docente D = db.Docentes.Find(id);
+                db.Docentes.Remove(D);
+                db.SaveChanges();
+                return RedirectToAction("Docentes");
+            }
+
+
+        }
     }
 }

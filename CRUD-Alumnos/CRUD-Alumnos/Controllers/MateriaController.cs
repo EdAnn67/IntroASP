@@ -55,5 +55,38 @@ namespace CRUD_Alumnos.Controllers
                 return View(M);
             }
         }
+
+        public ActionResult EditarMat(int id)
+        {
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    Materia M = db.Materias.Where(a => a.Id == id).FirstOrDefault();
+                    Materia Mat = db.Materias.Find(id);
+                    return View(Mat);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
+        public ActionResult DeleteMat(int id)
+        {
+
+            using (var db = new AlumnosContext())
+            {
+                Materia M = db.Materias.Find(id);
+                db.Materias.Remove(M);
+                db.SaveChanges();
+                return RedirectToAction("Materias");
+            }
+
+
+        }
     }
 }

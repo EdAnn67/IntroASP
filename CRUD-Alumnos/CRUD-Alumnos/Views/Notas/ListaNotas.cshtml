@@ -42,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.IdAlumno)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Editar", "EditarNotas", new { id=item.Id }) |
             @Html.ActionLink("Detalles", "DetalleNotas", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Eliminar", "DeleteNotas", new { id=item.Id })
         </td>
     </tr>
 }

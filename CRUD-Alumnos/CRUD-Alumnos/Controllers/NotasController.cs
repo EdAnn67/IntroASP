@@ -60,5 +60,38 @@ namespace CRUD_Alumnos.Controllers
                 return View(N);
             }
         }
+
+        public ActionResult EditarNotas(int id)
+        {
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    Nota N = db.Notas.Where(a => a.Id == id).FirstOrDefault();
+                    Nota No = db.Notas.Find(id);
+                    return View(No);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
+        public ActionResult DeleteNotas(int id)
+        {
+
+            using (var db = new AlumnosContext())
+            {
+                Nota N = db.Notas.Find(id);
+                db.Notas.Remove(N);
+                db.SaveChanges();
+                return RedirectToAction("ListaNotas");
+            }
+
+
+        }
     }
 }

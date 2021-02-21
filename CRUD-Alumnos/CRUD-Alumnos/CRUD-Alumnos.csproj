@@ -236,6 +236,12 @@
     <Content Include="Views\Materia\detalleMat.cshtml" />
     <Content Include="Views\Docente\detalleDoc.cshtml" />
     <Content Include="Views\Notas\detalleNotas.cshtml" />
+    <Content Include="Views\Notas\EditarNotas.cshtml" />
+    <Content Include="Views\Materia\EditarMat.cshtml" />
+    <Content Include="Views\Docente\EditarDoc.cshtml" />
+    <Content Include="Views\Notas\DeleteNotas.cshtml" />
+    <Content Include="Views\Materia\DeleteMat.cshtml" />
+    <Content Include="Views\Docente\DeleteDoc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
