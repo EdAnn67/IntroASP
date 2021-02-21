@@ -45,7 +45,15 @@ namespace CRUD_Alumnos.Controllers
                 ModelState.AddModelError("", "Error al agregar materia " + ex.Message);
                 return View();
             }
-            return View();
+        }
+
+        public ActionResult detalleMat(int id)
+        {
+            using (var db = new AlumnosContext())
+            {
+                Materia M = db.Materias.Find(id);
+                return View(M);
+            }
         }
     }
 }

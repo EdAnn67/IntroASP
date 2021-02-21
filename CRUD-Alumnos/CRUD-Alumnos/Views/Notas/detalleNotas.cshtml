@@ -1,0 +1,51 @@
+﻿@model CRUD_Alumnos.Models.Nota
+
+@{
+    ViewBag.Title = "detalleNotas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>detalleNotas</h2>
+
+<div>
+    <h4>Nota</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nota1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nota1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nota2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nota2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nota3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nota3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdAlumno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdAlumno)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

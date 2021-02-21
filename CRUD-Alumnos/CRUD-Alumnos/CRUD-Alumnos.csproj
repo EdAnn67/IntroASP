@@ -233,6 +233,9 @@
     <Content Include="Views\Materia\Materias.cshtml" />
     <Content Include="Views\Materia\CrearMat.cshtml" />
     <Content Include="Views\Docente\AgregarDoc.cshtml" />
+    <Content Include="Views\Materia\detalleMat.cshtml" />
+    <Content Include="Views\Docente\detalleDoc.cshtml" />
+    <Content Include="Views\Notas\detalleNotas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

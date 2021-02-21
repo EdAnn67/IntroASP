@@ -49,5 +49,16 @@ namespace CRUD_Alumnos.Controllers
                 return View();
             }
         }
+
+
+
+        public ActionResult detalleNotas(int id)
+        {
+            using(var db = new AlumnosContext())
+            {
+                Nota N = db.Notas.Find(id);
+                return View(N);
+            }
+        }
     }
 }

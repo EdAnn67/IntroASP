@@ -1,0 +1,35 @@
+﻿@model CRUD_Alumnos.Models.Materia
+
+@{
+    ViewBag.Title = "detalleMat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>detalleMat</h2>
+
+<div>
+    <h4>Materia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdNotas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdNotas)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

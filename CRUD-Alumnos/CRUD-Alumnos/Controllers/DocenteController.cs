@@ -47,5 +47,14 @@ namespace CRUD_Alumnos.Controllers
                 return View();
             }
         }
+
+        public ActionResult detalleDoc(int id)
+        {
+            using (var db = new AlumnosContext())
+            {
+                Docente D = db.Docentes.Find(id);
+                return View(D);
+            }
+        }
     }
 }
