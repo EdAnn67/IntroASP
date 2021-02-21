@@ -129,7 +129,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlumnoController.cs" />
+    <Compile Include="Controllers\DocenteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MateriaController.cs" />
+    <Compile Include="Controllers\NotasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,6 +141,12 @@
     </Compile>
     <Compile Include="Models\AlumnoCE.cs" />
     <Compile Include="Models\Ciudade.cs">
+      <DependentUpon>ModelAlumnos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Docente.cs">
+      <DependentUpon>ModelAlumnos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Materia.cs">
       <DependentUpon>ModelAlumnos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelAlumnos.Context.cs">
@@ -154,6 +163,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAlumnos.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Nota.cs">
+      <DependentUpon>ModelAlumnos.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -215,6 +227,12 @@
     <Content Include="Views\Alumno\Editar.cshtml" />
     <Content Include="Views\Alumno\Details.cshtml" />
     <Content Include="Views\Alumno\ListaCiudades.cshtml" />
+    <Content Include="Views\Notas\agregarNotas.cshtml" />
+    <Content Include="Views\Notas\ListaNotas.cshtml" />
+    <Content Include="Views\Docente\Docentes.cshtml" />
+    <Content Include="Views\Materia\Materias.cshtml" />
+    <Content Include="Views\Materia\CrearMat.cshtml" />
+    <Content Include="Views\Docente\AgregarDoc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

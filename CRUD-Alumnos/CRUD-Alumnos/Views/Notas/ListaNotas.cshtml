@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CRUD_Alumnos.Models.Nota>
+
+@{
+    ViewBag.Title = "ListaNotas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListaNotas</h2>
+
+<p>
+    @Html.ActionLink("Nuevas Notas", "agregarNotas")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nota1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nota2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nota3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdAlumno)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nota1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nota2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nota3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdAlumno)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

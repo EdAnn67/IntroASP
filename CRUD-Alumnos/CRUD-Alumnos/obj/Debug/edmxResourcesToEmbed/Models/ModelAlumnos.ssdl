@@ -19,6 +19,33 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Docente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdMateria" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdNotas" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Notas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nota1" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Nota2" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Nota3" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="IdAlumno" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Alumno_Ciudades">
     <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="1" />
     <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
@@ -31,12 +58,63 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Docente_Materia">
+    <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
+    <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Docente">
+        <PropertyRef Name="IdMateria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materia_Notas">
+    <End Role="Notas" Type="Self.Notas" Multiplicity="1" />
+    <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Notas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Materia">
+        <PropertyRef Name="IdNotas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notas_Alumno">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="Notas" Type="Self.Notas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notas">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="AlumnoDBModelStoreContainer">
     <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ciudades" EntityType="Self.Ciudades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Docente" EntityType="Self.Docente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notas" EntityType="Self.Notas" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Alumno_Ciudades" Association="Self.FK_Alumno_Ciudades">
       <End Role="Ciudades" EntitySet="Ciudades" />
       <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Docente_Materia" Association="Self.FK_Docente_Materia">
+      <End Role="Materia" EntitySet="Materia" />
+      <End Role="Docente" EntitySet="Docente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materia_Notas" Association="Self.FK_Materia_Notas">
+      <End Role="Notas" EntitySet="Notas" />
+      <End Role="Materia" EntitySet="Materia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notas_Alumno" Association="Self.FK_Notas_Alumno">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Notas" EntitySet="Notas" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
