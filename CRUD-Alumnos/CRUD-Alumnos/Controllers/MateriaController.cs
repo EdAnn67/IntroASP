@@ -75,6 +75,30 @@ namespace CRUD_Alumnos.Controllers
 
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarMat(Materia a)
+        {
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    Materia M = db.Materias.Find(a.Id);
+                    M.Nombre = a.Nombre;
+                    M.IdNotas = a.IdNotas;
+
+                    db.SaveChanges();
+                    return View(M);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
         public ActionResult DeleteMat(int id)
         {
 

@@ -56,7 +56,7 @@ namespace CRUD_Alumnos.Controllers
                 return View(D);
             }
         }
-        /*
+        
         public ActionResult EditarDoc(int id)
         {
             try
@@ -74,7 +74,33 @@ namespace CRUD_Alumnos.Controllers
                 throw;
             }
 
-        }*/
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarDoc(Docente a)
+        {
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    Docente D = db.Docentes.Find(a.Id);
+                    D.Nombre = a.Nombre;
+                    D.Apellido = a.Apellido;
+                    D.IdMateria = a.IdMateria;
+
+                    db.SaveChanges();
+                    return View(D);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+
 
         public ActionResult DeleteDoc(int id)
         {

@@ -61,6 +61,8 @@ namespace CRUD_Alumnos.Controllers
             }
         }
 
+
+        
         public ActionResult EditarNotas(int id)
         {
             try
@@ -78,6 +80,33 @@ namespace CRUD_Alumnos.Controllers
                 throw;
             }
 
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarNotas(Nota a)
+        {
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    Nota N = db.Notas.Find(a.Id);
+                    N.Nota1 = a.Nota1;
+                    N.Nota2 = a.Nota2;
+                    N.Nota3 = a.Nota3;
+                    N.IdAlumno = a.IdAlumno;
+
+                    db.SaveChanges();
+                    return View(N);
+                }
+            }
+            catch (Exception ex)
+            {
+                
+
+                throw;
+            }
         }
 
         public ActionResult DeleteNotas(int id)
