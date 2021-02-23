@@ -86,7 +86,7 @@ namespace CRUD_Alumnos.Controllers
                 {
                     Materia M = db.Materias.Find(a.Id);
                     M.Nombre = a.Nombre;
-                    M.IdNotas = a.IdNotas;
+                    
 
                     db.SaveChanges();
                     return View(M);

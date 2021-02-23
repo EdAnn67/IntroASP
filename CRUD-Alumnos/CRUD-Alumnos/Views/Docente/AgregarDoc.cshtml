@@ -17,25 +17,25 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.IdMateria, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdMateria, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.Action("ListaMaterias")
                 @Html.ValidationMessageFor(model => model.IdMateria, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,7 +49,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Docentes")
 </div>
 
 @section Scripts {

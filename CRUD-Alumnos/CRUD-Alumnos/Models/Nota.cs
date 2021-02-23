@@ -14,20 +14,14 @@ namespace CRUD_Alumnos.Models
     
     public partial class Nota
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Nota()
-        {
-            this.Materias = new HashSet<Materia>();
-        }
-    
         public int Id { get; set; }
         public Nullable<decimal> Nota1 { get; set; }
         public Nullable<decimal> Nota2 { get; set; }
         public Nullable<decimal> Nota3 { get; set; }
         public int IdAlumno { get; set; }
+        public int IdMateria { get; set; }
     
         public virtual Alumno Alumno { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Materia> Materias { get; set; }
+        public virtual Materia Materia { get; set; }
     }
 }

@@ -242,6 +242,9 @@
     <Content Include="Views\Docente\DeleteDoc.cshtml" />
     <Content Include="Views\Notas\EditarNotas.cshtml" />
     <Content Include="Views\Materia\EditarMat.cshtml" />
+    <Content Include="Views\Docente\ListaMaterias.cshtml" />
+    <Content Include="Views\Notas\ListaMaterias.cshtml" />
+    <Content Include="Views\Notas\ListaAlumnos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,9 +15,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdNotas)
-        </th>
         <th></th>
     </tr>
 
@@ -25,9 +22,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdNotas)
         </td>
         <td>
             @Html.ActionLink("Editar", "EditarMat", new { id=item.Id }) |

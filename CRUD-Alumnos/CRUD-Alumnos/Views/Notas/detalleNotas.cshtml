@@ -36,16 +36,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IdAlumno)
+            Alumno
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IdAlumno)
+            @CRUD_Alumnos.Controllers.NotasController.Nombre_Alumno(Model.IdAlumno)
+        </dd>
+
+        <dt>
+            Materia
+        </dt>
+
+        <dd>
+            @CRUD_Alumnos.Controllers.NotasController.Nombre_Materia(Model.IdMateria)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "EditarNotas", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar", "ListaNotas")
 </p>

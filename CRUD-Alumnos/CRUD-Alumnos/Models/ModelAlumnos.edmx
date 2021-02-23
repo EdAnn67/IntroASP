@@ -29,8 +29,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IdMateria" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Materia">
@@ -39,17 +39,17 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdNotas" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Notas">
+        <EntityType Name="Nota">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nota1" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Nota2" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Nota3" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Nota1" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Nota2" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Nota3" Type="numeric" Precision="18" Scale="0" />
           <Property Name="IdAlumno" Type="int" Nullable="false" />
+          <Property Name="IdMateria" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Alumno_Ciudades">
           <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="1" />
@@ -75,27 +75,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Materia_Notas">
-          <End Role="Notas" Type="Self.Notas" Multiplicity="1" />
-          <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Notas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Materia">
-              <PropertyRef Name="IdNotas" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Notas_Alumno">
+        <Association Name="FK_Nota_Alumno">
           <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
-          <End Role="Notas" Type="Self.Notas" Multiplicity="*" />
+          <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Alumno">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Notas">
+            <Dependent Role="Nota">
               <PropertyRef Name="IdAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nota_Materia">
+          <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
+          <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Nota">
+              <PropertyRef Name="IdMateria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -104,7 +104,7 @@
           <EntitySet Name="Ciudades" EntityType="Self.Ciudades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Docente" EntityType="Self.Docente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Notas" EntityType="Self.Notas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nota" EntityType="Self.Nota" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Alumno_Ciudades" Association="Self.FK_Alumno_Ciudades">
             <End Role="Ciudades" EntitySet="Ciudades" />
             <End Role="Alumno" EntitySet="Alumno" />
@@ -113,13 +113,13 @@
             <End Role="Materia" EntitySet="Materia" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
-          <AssociationSet Name="FK_Materia_Notas" Association="Self.FK_Materia_Notas">
-            <End Role="Notas" EntitySet="Notas" />
-            <End Role="Materia" EntitySet="Materia" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Notas_Alumno" Association="Self.FK_Notas_Alumno">
+          <AssociationSet Name="FK_Nota_Alumno" Association="Self.FK_Nota_Alumno">
             <End Role="Alumno" EntitySet="Alumno" />
-            <End Role="Notas" EntitySet="Notas" />
+            <End Role="Nota" EntitySet="Nota" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nota_Materia" Association="Self.FK_Nota_Materia">
+            <End Role="Materia" EntitySet="Materia" />
+            <End Role="Nota" EntitySet="Nota" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -136,7 +136,7 @@
             <End Role="Ciudade" EntitySet="Ciudades" />
             <End Role="Alumno" EntitySet="Alumnoes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Notas_Alumno" Association="AlumnoDBModel.FK_Notas_Alumno">
+          <AssociationSet Name="FK_Nota_Alumno" Association="AlumnoDBModel.FK_Nota_Alumno">
             <End Role="Alumno" EntitySet="Alumnoes" />
             <End Role="Nota" EntitySet="Notas" />
           </AssociationSet>
@@ -144,9 +144,9 @@
             <End Role="Materia" EntitySet="Materias" />
             <End Role="Docente" EntitySet="Docentes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Materia_Notas" Association="AlumnoDBModel.FK_Materia_Notas">
-            <End Role="Nota" EntitySet="Notas" />
+          <AssociationSet Name="FK_Nota_Materia" Association="AlumnoDBModel.FK_Nota_Materia">
             <End Role="Materia" EntitySet="Materias" />
+            <End Role="Nota" EntitySet="Notas" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Alumno">
@@ -161,7 +161,7 @@
           <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="codCiudad" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Ciudade" Relationship="AlumnoDBModel.FK_Alumno_Ciudades" FromRole="Alumno" ToRole="Ciudade" />
-          <NavigationProperty Name="Notas" Relationship="AlumnoDBModel.FK_Notas_Alumno" FromRole="Alumno" ToRole="Nota" />
+          <NavigationProperty Name="Notas" Relationship="AlumnoDBModel.FK_Nota_Alumno" FromRole="Alumno" ToRole="Nota" />
         </EntityType>
         <EntityType Name="Ciudade">
           <Key>
@@ -176,8 +176,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdMateria" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Materia" Relationship="AlumnoDBModel.FK_Docente_Materia" FromRole="Docente" ToRole="Materia" />
         </EntityType>
@@ -187,9 +187,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdNotas" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Docentes" Relationship="AlumnoDBModel.FK_Docente_Materia" FromRole="Materia" ToRole="Docente" />
-          <NavigationProperty Name="Nota" Relationship="AlumnoDBModel.FK_Materia_Notas" FromRole="Materia" ToRole="Nota" />
+          <NavigationProperty Name="Notas" Relationship="AlumnoDBModel.FK_Nota_Materia" FromRole="Materia" ToRole="Nota" />
         </EntityType>
         <EntityType Name="Nota">
           <Key>
@@ -200,8 +199,9 @@
           <Property Name="Nota2" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Nota3" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="IdAlumno" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Alumno" Relationship="AlumnoDBModel.FK_Notas_Alumno" FromRole="Nota" ToRole="Alumno" />
-          <NavigationProperty Name="Materias" Relationship="AlumnoDBModel.FK_Materia_Notas" FromRole="Nota" ToRole="Materia" />
+          <Property Name="IdMateria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alumno" Relationship="AlumnoDBModel.FK_Nota_Alumno" FromRole="Nota" ToRole="Alumno" />
+          <NavigationProperty Name="Materia" Relationship="AlumnoDBModel.FK_Nota_Materia" FromRole="Nota" ToRole="Materia" />
         </EntityType>
         <Association Name="FK_Alumno_Ciudades">
           <End Type="AlumnoDBModel.Ciudade" Role="Ciudade" Multiplicity="1" />
@@ -215,7 +215,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Notas_Alumno">
+        <Association Name="FK_Nota_Alumno">
           <End Type="AlumnoDBModel.Alumno" Role="Alumno" Multiplicity="1" />
           <End Type="AlumnoDBModel.Nota" Role="Nota" Multiplicity="*" />
           <ReferentialConstraint>
@@ -239,15 +239,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Materia_Notas">
-          <End Type="AlumnoDBModel.Nota" Role="Nota" Multiplicity="1" />
-          <End Type="AlumnoDBModel.Materia" Role="Materia" Multiplicity="*" />
+        <Association Name="FK_Nota_Materia">
+          <End Type="AlumnoDBModel.Materia" Role="Materia" Multiplicity="1" />
+          <End Type="AlumnoDBModel.Nota" Role="Nota" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Nota">
+            <Principal Role="Materia">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Materia">
-              <PropertyRef Name="IdNotas" />
+            <Dependent Role="Nota">
+              <PropertyRef Name="IdMateria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -282,8 +282,8 @@
             <EntityTypeMapping TypeName="AlumnoDBModel.Docente">
               <MappingFragment StoreEntitySet="Docente">
                 <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -291,7 +291,6 @@
           <EntitySetMapping Name="Materias">
             <EntityTypeMapping TypeName="AlumnoDBModel.Materia">
               <MappingFragment StoreEntitySet="Materia">
-                <ScalarProperty Name="IdNotas" ColumnName="IdNotas" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -299,7 +298,8 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Notas">
             <EntityTypeMapping TypeName="AlumnoDBModel.Nota">
-              <MappingFragment StoreEntitySet="Notas">
+              <MappingFragment StoreEntitySet="Nota">
+                <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
                 <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
                 <ScalarProperty Name="Nota3" ColumnName="Nota3" />
                 <ScalarProperty Name="Nota2" ColumnName="Nota2" />

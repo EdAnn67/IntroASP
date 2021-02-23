@@ -19,17 +19,9 @@
             @Html.DisplayFor(model => model.Nombre)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IdNotas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdNotas)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "EditarMat", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar", "Materias")
 </p>

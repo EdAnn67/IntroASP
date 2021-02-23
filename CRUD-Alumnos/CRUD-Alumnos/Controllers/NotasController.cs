@@ -122,5 +122,38 @@ namespace CRUD_Alumnos.Controllers
 
 
         }
+
+
+        public static string Nombre_Alumno(int CodAlumno)
+        {
+            using (var db = new AlumnosContext())
+            {
+                return db.Alumnoes.Find(CodAlumno).Nombres;
+            };
+        }
+
+        public static string Nombre_Materia(int CodMateria)
+        {
+            using (var db = new AlumnosContext())
+            {
+                return db.Materias.Find(CodMateria).Nombre;
+            };
+        }
+
+        public ActionResult ListaMaterias()
+        {
+            using (var db = new AlumnosContext())
+            {
+                return PartialView(db.Materias.ToList());
+            }
+        }
+
+        public ActionResult ListaAlumnos()
+        {
+            using (var db = new AlumnosContext())
+            {
+                return PartialView(db.Alumnoes.ToList());
+            }
+        }
     }
 }

@@ -85,8 +85,8 @@ namespace CRUD_Alumnos.Controllers
                 using (var db = new AlumnosContext())
                 {
                     Docente D = db.Docentes.Find(a.Id);
-                    D.Nombre = a.Nombre;
-                    D.Apellido = a.Apellido;
+                    D.Nombres = a.Nombres;
+                    D.Apellidos = a.Apellidos;
                     D.IdMateria = a.IdMateria;
 
                     db.SaveChanges();
@@ -114,6 +114,24 @@ namespace CRUD_Alumnos.Controllers
             }
 
 
+        }
+
+
+
+        public static string Nombre_Materia(int CodMateria)
+        {
+            using (var db = new AlumnosContext())
+            {
+                return db.Materias.Find(CodMateria).Nombre;
+            };
+        }
+
+        public ActionResult ListaMaterias()
+        {
+            using(var db = new AlumnosContext())
+            {
+                return PartialView(db.Materias.ToList());
+            }
         }
     }
 }

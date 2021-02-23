@@ -26,8 +26,8 @@
       <EntityTypeMapping TypeName="AlumnoDBModel.Docente">
         <MappingFragment StoreEntitySet="Docente">
           <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -35,7 +35,6 @@
     <EntitySetMapping Name="Materias">
       <EntityTypeMapping TypeName="AlumnoDBModel.Materia">
         <MappingFragment StoreEntitySet="Materia">
-          <ScalarProperty Name="IdNotas" ColumnName="IdNotas" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
@@ -43,7 +42,8 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Notas">
       <EntityTypeMapping TypeName="AlumnoDBModel.Nota">
-        <MappingFragment StoreEntitySet="Notas">
+        <MappingFragment StoreEntitySet="Nota">
+          <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
           <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
           <ScalarProperty Name="Nota3" ColumnName="Nota3" />
           <ScalarProperty Name="Nota2" ColumnName="Nota2" />

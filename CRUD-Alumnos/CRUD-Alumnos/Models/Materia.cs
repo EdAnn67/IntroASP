@@ -18,14 +18,15 @@ namespace CRUD_Alumnos.Models
         public Materia()
         {
             this.Docentes = new HashSet<Docente>();
+            this.Notas = new HashSet<Nota>();
         }
     
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public int IdNotas { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Docente> Docentes { get; set; }
-        public virtual Nota Nota { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Nota> Notas { get; set; }
     }
 }

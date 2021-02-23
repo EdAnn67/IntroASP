@@ -44,6 +44,14 @@
             @Html.DisplayFor(model => model.IdAlumno)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.IdMateria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdMateria)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
@@ -51,7 +59,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Regresar", "ListaNotas")
         </div>
     }
 </div>

@@ -13,34 +13,35 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayNameFor(model => model.Nombres)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Apellido)
+            @Html.DisplayNameFor(model => model.Apellidos)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdMateria)
+            Materia
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdMateria)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "EditarDoc", new { id=item.Id }) |
-            @Html.ActionLink("Detalles", "DetalleDoc", new { id=item.Id }) |
-            @Html.ActionLink("Eliminar", "DeleteDoc", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombres)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Apellidos)
+    </td>
+    
+    <td>
+        @CRUD_Alumnos.Controllers.DocenteController.Nombre_Materia(item.IdMateria)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "EditarDoc", new { id = item.Id }) |
+        @Html.ActionLink("Detalles", "DetalleDoc", new { id = item.Id }) |
+        @Html.ActionLink("Eliminar", "DeleteDoc", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>
