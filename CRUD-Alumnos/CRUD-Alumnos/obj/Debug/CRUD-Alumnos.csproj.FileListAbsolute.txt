@@ -58,3 +58,9 @@ C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\obj\Debug\C
 C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\obj\Debug\CRUD-Alumnos.csproj.CopyComplete
 C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\obj\Debug\CRUD-Alumnos.dll
 C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\obj\Debug\CRUD-Alumnos.pdb
+C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\bin\System.Net.Http.Formatting.dll
+C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\bin\System.Web.Http.dll
+C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\bin\System.Web.Http.WebHost.dll
+C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\bin\System.Net.Http.Formatting.xml
+C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\bin\System.Web.Http.xml
+C:\Users\Eduardo\Desktop\TareaAPI\IntroASP\CRUD-Alumnos\CRUD-Alumnos\bin\System.Web.Http.WebHost.xml
