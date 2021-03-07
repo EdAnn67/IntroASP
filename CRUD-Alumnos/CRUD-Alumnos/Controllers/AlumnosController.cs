@@ -11,57 +11,64 @@ using Newtonsoft.Json.Linq;
 
 namespace CRUD_Alumnos.Controllers
 {
+    //[ApiController]
+    [AllowAnonymous]
+    [RoutePrefix("api/Alumnos")]
     public class AlumnosController : ApiController
     {
-        [ResponseType(typeof(Alumno))]  
-        public IEnumerable<Alumno> Get()
+        //[ResponseType(typeof(Alumno))]
+        [HttpGet]
+        public IHttpActionResult Get()
         {
             try
             {
-                int TestInt = 0;
                 string sql = @"Select * From Alumno";
                 using (var db = new AlumnosContext())
                 {
-                    return db.Database.SqlQuery<Alumno>(sql).ToList();
+                    return Ok(db.Database.SqlQuery<Alumno>(sql).ToList());
                 }
             }
-            catch
+            catch (Exception e)
             {
                 throw;
             }
         }
 
         [ResponseType(typeof(Alumno))]
+        [HttpGet]
+        [Route("~/api/Alumnos/{id:int}")]
         public IHttpActionResult Get(int id)
         {
             try
             {
-                string sql = @"Select * From Alumnos";
+                string sql = @"Select * From Alumno";
                 using (var db = new AlumnosContext())
                 {
-                    return Ok(db.Database.SqlQuery<Alumno>(sql).Where(Alumno => Alumno.Id == id).ToList());
+                    return Ok(db.Database.SqlQuery<Alumno>(sql).Where(a => a.Id == id).ToList());
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine("Error: " + e.Message);
                 return NotFound();
             }
         }
-        
-        public IHttpActionResult Post([FromBody] JObject json)
+
+        public IHttpActionResult Post([FromBody] JObject jsonD)
         {
             try
             {
-                using (var db = new AlumnosContext())
+                using (AlumnosContext db = new AlumnosContext())
                 {
-                    Alumno data = JsonConvert.DeserializeObject<Alumno>(json.ToString());
-                    db.Alumnoes.Add(data);
-                    return Ok(data);
+                    Alumno a = JsonConvert.DeserializeObject<Alumno>(jsonD.ToString());
+                    db.Alumnoes.Add(a);
+                    db.SaveChanges();
+                    return Ok(a);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
     }

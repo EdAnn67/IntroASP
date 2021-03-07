@@ -19,7 +19,7 @@ namespace CRUD_Alumnos.Controllers
         {
             try
             {
-                string sql = @"Select * From Alumnos";
+                string sql = @"Select * From Materia";
                 using (var db = new AlumnosContext())
                 {
                     return db.Database.SqlQuery<Materia>(sql).ToList();
@@ -48,20 +48,21 @@ namespace CRUD_Alumnos.Controllers
             }
         }
 
-        public IHttpActionResult Post([FromBody] JObject json)
+        public IHttpActionResult Post([FromBody] JObject jsonD)
         {
             try
             {
-                using (var db = new AlumnosContext())
+                using (AlumnosContext db = new AlumnosContext())
                 {
-                    Materia data = JsonConvert.DeserializeObject<Materia>(json.ToString());
-                    db.Materias.Add(data);
-                    return Ok(data);
+                    Materia M = JsonConvert.DeserializeObject<Materia>(jsonD.ToString());
+                    db.Materias.Add(M);
+                    db.SaveChanges();
+                    return Ok(M);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
     }
